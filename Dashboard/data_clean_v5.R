@@ -14,7 +14,7 @@ min_byte_size = 3000
 resp_code = 200
 access_method = "GET"
 filter_strings_1 = "debug|static"
-filter_strings_2 = "bot|crawler|agent|research|scan|data|grab|http"
+filter_strings_2 = "bot|crawler|agent|research|scan|data|grab|http|python|curl|grequests|embarcadero|\\.com"
 path_exclusions = "\\.php|\\?"
 
 # Get all data folders and logs ----
