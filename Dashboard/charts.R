@@ -17,3 +17,5 @@ csv_data$Date = ymd(csv_data$Date)
 # Aggregate data ----
 visit_month = dd %>% group_by(Year, Month) %>% summarise(n_orders=n(),sum_sales=sum(Sales)) #%>% arrange(desc(sum_sales))
 dda= as.data.frame(dda)
+
+tesing
