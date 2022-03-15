@@ -1,4 +1,4 @@
-# Data Preparation Case Study
+# Data Preparation and Visualization Case Study
 
 ## Project Description
 
