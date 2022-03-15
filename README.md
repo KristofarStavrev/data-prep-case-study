@@ -23,6 +23,8 @@ Libraries used:
 ## Data Understanding
 The data that this project uses is stored in access log files with each file representing a separate day and containing a complete list of all requests made to the web server. The exact structure of the information and all the different columns can be seen in the figure below.
 
+![alt text](https://github.com/KrythonS/data-prep-case-study/blob/main/images/image.jpg?raw=true)
+
 ## To run the program
 
 ## Design of the dashboard
