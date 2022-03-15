@@ -19,3 +19,9 @@ Libraries used:
 - plotly
 - reshape2
 - ggpubr
+
+## Data Understanding
+
+## To run the program
+
+## Design of the dashboard
