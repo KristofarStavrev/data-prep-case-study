@@ -1,2 +1,2 @@
 *.html linguist-vendored
-*.1 linguist-vendored
+*log.1 linguist-vendored
