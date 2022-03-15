@@ -1,0 +1,171 @@
+---
+title: "Fileado Website Analytics Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(plotly)
+library(DT)
+library(reshape2)
+library(ggpubr)
+library(plyr)
+library(dplyr)
+source("data_clean.R")
+source("data_aggregate.R")
+```
+
+# Overview
+
+## Column {data-width=400, .tabset}
+
+### Daily Visits
+
+```{r}
+chart_daily_visits = ggplot(melt(daily_visits,id.vars="Date", value.name="Visits", variable.name="Type"), aes(x=Date, y=Visits, group=Type, color=Type)) +
+    geom_line(size=1)+
+    ylim(0,round_any(max(daily_visits$`Total Visits`)+10,10))+
+    theme_pubclean()
+
+ggplotly(chart_daily_visits)
+```
+
+### Weekly Visits
+
+```{r}
+chart_weekly_visits = ggplot(melt(weekly_visits,id.vars="Week", value.name="Visits", variable.name="Type"), aes(fill=Type, x=Week, y=Visits)) +
+  geom_bar(position="dodge", stat="identity", width=0.6)+
+  theme_pubclean()
+
+ggplotly(chart_weekly_visits)
+```
+
+### Monthly Visits 
+
+```{r}
+chart_monthly_visits = ggplot(melt(monthly_visits,id.vars="Month", value.name="Visits", variable.name="Type"), aes(fill=Type, x=Month, y=Visits)) +
+  geom_bar(position="dodge", stat="identity", width=0.6)+
+  theme_pubclean()
+
+ggplotly(chart_monthly_visits)
+```
+
+### Yearly Visits
+
+```{r}
+chart_yearly_visits = ggplot(melt(yearly_visits,id.vars="Year", value.name="Visits", variable.name="Type"), aes(fill=Type, x=Year, y=Visits)) +
+  geom_bar(position="dodge", stat="identity", width=0.6) +
+  scale_x_continuous(breaks=c(2019,2020,2021,2022,2023,2024,2025))+
+  theme_pubclean()
+
+ggplotly(chart_yearly_visits)
+```
+
+## Column {data-width=400, .tabset}
+
+### Weekly Total Visits by Sections
+
+```{r}
+chart_weekly_page_visits = ggplot(weekly_page_visits[,c(1,2,3)], aes(fill=Section, y=`Total Visits`, x=Week)) + 
+    geom_bar(position="stack", stat="identity", width=0.6)+
+    theme_pubclean()
+
+ggplotly(chart_weekly_page_visits)
+```
+
+### Monthly Total Visits by Sections
+
+```{r}
+chart_monthly_page_visits = ggplot(monthly_page_visits[,c(1,2,3)], aes(fill=Section, y=`Total Visits`, x=Month)) + 
+    geom_bar(position="stack", stat="identity", width=0.6)+
+    theme_pubclean()
+
+ggplotly(chart_monthly_page_visits)
+```
+
+### Yearly Total Visits by Sections
+
+```{r}
+chart_yearly_page_visits = ggplot(yearly_page_visits[,c(1,2,3)], aes(fill=Section, y=`Total Visits`, x=Year)) + 
+    geom_bar(position="stack", stat="identity", width=0.6)+
+    scale_x_continuous(breaks=c(2019,2020,2021,2022,2023,2024,2025))+
+    theme_pubclean()
+
+ggplotly(chart_yearly_page_visits)
+```
+
+## Column {data-width=200}
+
+### Page Visits per Session
+
+```{r}
+chart_visits_per_session = pages_per_visit %>%
+  arrange(Sessions) %>%  
+  mutate(Pages=factor(Pages, levels=Pages)) %>%  
+  ggplot(aes(x=Pages, y=Sessions)) + 
+  geom_bar(stat = "identity", color="#00BFC4", fill="#00BFC4", width=0.6, gap=0.5) +
+  coord_flip()+
+  theme_classic()
+
+ggplotly(chart_visits_per_session)
+```
+
+### Drop-off Sections
+
+```{r}
+chart_drops = drop_off_section %>%
+  arrange(Drops) %>%  
+  mutate(Page=factor(Page, levels=Page)) %>%  
+  ggplot(aes(x=Page, y=Drops)) + 
+  geom_bar(stat = "identity", color="#F8766D", fill="#F8766D", width=0.6, gap=0.5) +
+  coord_flip()+
+  theme_classic()
+
+ggplotly(chart_drops)
+```
+
+# Blog Section
+
+## Column {data-width=500}
+
+### Total Article Visits
+
+<style>
+.dataTables_scrollBody {
+    max-height: 100% !important;
+}
+</style>
+
+```{r}
+datatable(article_visits, extensions = 'Buttons', options = list(
+  dom = 'Blfrtip',
+  pageLength = 25,
+  buttons = c('copy', 'print', 'csv')))
+```
+
+## Column {data-width=500}
+
+### Most Popular Authors by Total Visits Share
+
+```{r}
+plot_ly(data=author_visits[,c(1,2)],labels=~ID, values=~`Total Visits`) %>% add_pie(hole = 0.5) %>%
+        layout(title = '',
+           xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+```
+
+### Author Popularity Over Time (Weekly Basis)
+
+```{r}
+author_visits_time = author_visits_time[,c(1,2,3)] %>%
+  ggplot( aes(x=Week, y=`Total Visits`, group=ID, color=ID)) +
+    geom_line(size=1)+
+    ylim(0,round_any(max(author_visits_time$`Total Visits`)+10,10))+
+    theme_pubclean()
+
+ggplotly(author_visits_time)
+```
