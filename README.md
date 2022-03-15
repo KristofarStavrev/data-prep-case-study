@@ -1,5 +1,5 @@
-# University Data Preparation Case Study
+# Data Preparation Case Study
 
 ## Project Description
 
-University case study for a private company
+The idea for the project originates from an university class case study given by a private wealth managemen company. The main goal was to extract and visualize insights from raw data provided by the company using data processing techniques and following the CRISP-DM methodology
