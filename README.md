@@ -22,6 +22,8 @@ Libraries used:
 ## Data Understanding
 The data that this project uses is stored in access log files with each file representing a separate day and containing a complete list of all requests made to the web server. The exact structure of the information and all the different columns can be seen in the figure below.
 
+### Image 1: Structure of the raw data
+
 ![alt text](https://github.com/KrythonS/data-prep-case-study/blob/main/images/image.png?raw=true)
 
 The main intention was to create an automated, scalable, and long-term solution which allows for an easy way to include new data in the the dashboard of charts. For this purpose, it was decided that the best approach would be to create an artificial database file under the format of CSV that would contain the entirety of the cleaned and filtered data.
@@ -31,3 +33,5 @@ Every time new log files are downloaded from the server they can simply be place
 ## To run the program
 
 ## Design of the dashboard
+
+### 
