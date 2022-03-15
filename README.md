@@ -32,6 +32,16 @@ Every time new log files are downloaded from the server they can simply be place
 
 ## To run the program
 
+A software is not particularly useful unless the customer can access its results. Detailed instructions and steps for deploying the code can be found below.
+
+
+
 ## Design of the dashboard
 
-### 
+### Image 2: Dashboard Overview Section
+
+![alt text](https://github.com/KrythonS/data-prep-case-study/blob/main/images/Overview.png?raw=true)
+
+### Image 3: Dashboard Blog Section
+
+![alt text](https://github.com/KrythonS/data-prep-case-study/blob/main/images/Blog.png?raw=true)
