@@ -1,6 +1,6 @@
 # Data Preparation and Visualization Case Study
 
-## Project Description
+## Project description
 
 The idea for the project originates from a university class case study given by a private wealth management company. The main goal of the project was to create a way to measure key performance indicators of the company website activities using automated data cleaning and analysis techniques following the [CRISP-DM](https://www.the-modeling-agency.com/crisp-dm.pdf) methodology. The final result was the creation of a dashboard with charts containing valuable insights about the customers of the company, which can further help in steering the marketing efforts in the right direction.
 
@@ -19,7 +19,7 @@ Libraries used:
 - reshape2
 - ggpubr
 
-## Data Understanding
+## Data understanding
 The data that this project uses is stored in access log files with each file representing a separate day and containing a complete list of all requests made to the web server. The exact structure of the information and all the different columns can be seen in the figure below.
 
 ### Image 1: Structure of the raw data
