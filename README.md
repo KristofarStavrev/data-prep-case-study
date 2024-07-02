@@ -34,7 +34,7 @@ Every time new log files are downloaded from the server they can simply be place
 
 A software is not particularly useful unless the customer can access its results. Detailed instructions and steps for deploying the code can be found below.
 
-1. Clone the repository `git clone https://github.com/KrythonS/data-prep-case-study.git`
+1. Clone the repository `git clone https://github.com/KristofarStavrev/data-prep-case-study.git`
 1. Install the required dependencies (list of libraries can be found above).
 2. Place raw data into the `logs` folder (sample of raw data can be found in the logs folder).
 3. Open the file `dashboard.Rmd` with RStudio and press the `Knit` button.
