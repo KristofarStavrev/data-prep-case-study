@@ -24,7 +24,7 @@ The data that this project uses is stored in access log files with each file rep
 
 ### Image 1: Structure of the raw data
 
-![alt text](https://i.ibb.co/YRNPMkw/image.png)
+![raw_data](docs/img/raw_data.png)
 
 The main intention was to create an automated, scalable, and long-term solution which allows for an easy way to include new data in the dashboard of charts. For this purpose, it was decided that the best approach would be to create an artificial database file under the format of CSV that would contain the entirety of the cleaned and filtered data.
 
@@ -45,8 +45,8 @@ Detailed instructions and steps for deploying the code can be found below.
 
 ### Image 2: Dashboard Overview Section
 
-![alt text](https://i.ibb.co/VvZWsdn/Overview.png)
+![overview](docs/img/overview.png)
 
 ### Image 3: Dashboard Blog Section
 
-![alt text](https://i.ibb.co/vxVRnYQ/Blog.png)
+![blog](docs/img/blog.png)
